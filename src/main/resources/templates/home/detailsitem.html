@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/index.html::areas(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container-md">
+	
+
+	<main th:object="${order}" style="margin-top: 50px;">
+		<div class="panel panel-primary">
+			<div class="panel-heading" style="font-size: 50; font-weight: 700;">ORDER INFORMATION</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="form-group col-sm-4">
+						<div>Order Number:</div>
+						<input th:field="*{id}" class="form-control" readonly>
+					</div>
+					<div class="form-group col-sm-4">
+						<div>Purchaser:</div>
+						<input th:field="*{user.username}" class="form-control"
+							readonly>
+					</div>
+					<div class="form-group col-sm-4">
+						<div>Purchased Date:</div>
+						<input th:field="*{createDate}" class="form-control" readonly>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<div>Shipping Address:</div>
+						<textarea th:field="*{address}" class="form-control" readonly></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-primary" style="margin-top: 50px; margin-bottom: 50px; background: #fff;
+		padding: 20px; border-radius: 10px;">
+			<div class="panel-heading">ORDER LINES</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="detail: *{items}" th:object="${detail}">
+						<th>[[*{product.productid}]]</th>
+						<td>[[*{product.productname}]]</td>
+						<td>[[*{#numbers.formatDecimal(price/1000000, 0, 'COMMA', 3,
+							'POINT')} + '.000đ']]</td>
+						<td>[[*{quantity}]]</td>
+						<td>[[*{#numbers.formatDecimal((price*quantity)/1000000, 0, 'COMMA',
+							3, 'POINT')} + '.000đ']]</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+	
+	
+
+	</div>
+</body>
+</html>

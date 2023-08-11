@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thống kê sản phẩm</title>
+<style>
+</style>
+
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome Icons -->
+<link rel="stylesheet"
+	href="/temp/plugins/fontawesome-free/css/all.min.css">
+<!-- overlayScrollbars -->
+<link rel="stylesheet"
+	href="/temp/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="/temp/dist/css/adminlte.min.css">
+</head>
+<body
+	class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+	<div style="width: 100%; background-color: rgba(222, 12, 12, 0.501);">
+		<a href="/home/admin/admin" class="brand-link"> <img
+			src="/images/Core-Technology-3-p-2600.png" width="100px">
+		</a>
+	</div>
+
+
+	<div>
+
+		<div class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 class="m-0">Over view</h1>
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+		<!-- /.content-header -->
+
+		<!-- Main content -->
+		<section class="content">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">Danh sách các sản phẩm</h3>
+				</div>
+				<!-- /.card-header -->
+				<div class="card-body">
+					<table id="example1" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Price</th>
+								<th>Categories</th>
+								<th>Image</th>
+								<th>Brand</th>
+								<th>Processor</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="pro : ${listPro}">
+								<td
+									style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 10ch;"><i
+									th:text="${pro.productname}"></i></td>
+								<td
+									style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 10ch;"><i
+									th:text="${#numbers.formatDecimal(pro.price/1000000, 0, 'COMMA', 3, 'POINT')} + '.000đ'"></i></td>
+								<td
+									style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 10ch;"><i
+									th:text="${pro.categoriesid.Namecategories}"></i></td>
+								<td><img th:src="@{'/laptop/' + ${pro.image1}}"
+									style="width: 100px; height: 60px; margin-left: 30px"></img></td>
+								<td
+									style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 10ch;"><i
+									th:text="${pro.brand}"></i></td>
+								<td
+									style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 10ch;"><i
+									th:text="${pro.processor}"></i></td>
+								<td><a
+									th:href="@{'/admin/product/edit?id=' + ${pro.productid}}"
+									type="button" class="btn btn-block btn-success btn-sm">Edit</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- /.card-body -->
+			</div>
+			<!-- /.card -->
+
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
+
+	<!-- Main Footer -->
+	<!-- <footer class="main-footer">
+  <center><strong>Nguyễn Hoài Nam.</strong></center>
+  </footer> -->
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- REQUIRED SCRIPTS -->
+	<!-- jQuery -->
+	<script src="/temp/plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="/temp/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- overlayScrollbars -->
+	<script
+		src="/temp/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="/temp/dist/js/adminlte.js"></script>
+
+	<!-- PAGE PLUGINS -->
+	<!-- jQuery Mapael -->
+	<script src="/temp/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+	<script src="/temp/plugins/raphael/raphael.min.js"></script>
+	<script src="/temp/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+	<script src="/temp/plugins/jquery-mapael/maps/usa_states.min.js"></script>
+	<!-- ChartJS -->
+	<script src="/temp/plugins/chart.js/Chart.min.js"></script>
+
+	<!-- AdminLTE for demo purposes -->
+	<!--<script src="./temp/dist/js/demo.js"></script> -->
+	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+	<script src="/temp/dist/js/pages/dashboard2.js"></script>
+	<!-- DataTables  & Plugins -->
+	<script src="/temp/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script
+		src="/temp/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+	<script
+		src="/temp/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+	<script
+		src="/temp/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+	<script
+		src="/temp/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+	<script
+		src="/temp/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+	<script src="/temp/plugins/jszip/jszip.min.js"></script>
+	<script src="/temp/plugins/pdfmake/pdfmake.min.js"></script>
+	<script src="/temp/plugins/pdfmake/vfs_fonts.js"></script>
+	<script src="/temp/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+	<script src="/temp/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+	<script src="/temp/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+	<script>
+		$(function() {
+			$("#example1").DataTable(
+					{
+						"responsive" : true,
+						"lengthChange" : false,
+						"autoWidth" : false,
+						"buttons" : [ "copy", "csv", "excel", "pdf", "print",
+								"colvis" ]
+					})
+		});
+	</script>
+	<script>
+		function deleteVideo(href) {
+			$
+					.ajax(
+							{
+								url : '/JAVA4ASMFINAL/admin/video?action=delete&href='
+										+ href
+							})
+					.then(
+							function(data) {
+
+								window.location.href = "http://localhost:8080/JAVA4ASMFINAL/admin/video?action=view";
+							}).fail(function(error) {
+						alert('Toang');
+					});
+		};
+	</script>
+
+
+
+
+
+
+</body>
+</html>

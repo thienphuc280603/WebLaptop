@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"
+	th:replace="~{layout/index.html::areas(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<aside>
+		<div class="container-md">
+			<div class="main-form">
+				<h3 style="margin-left: 25%">Tạo tài khoản</h3>
+				<form action="" th:action="@{/api/register}"
+					th:object="${userRegistrationDto}" method="post" class="form-grop">
+					<div class="form-group">
+						<input type="text" placeholder="Username" th:field="*{username}"
+							required> <input type="text" placeholder="Full name"
+							th:field="*{fullname}" required> <input type="text"
+							placeholder="Email" th:field="*{email}" required> <input
+							type="text" placeholder="Password" th:field="*{passwords}"
+							required> <input type="text" placeholder="Phone"
+							th:field="*{phone}" required>
+						<div class="button-group">
+							<button style="margin-left: 35%;">Đăng ký</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</aside>
+</body>
+</html>

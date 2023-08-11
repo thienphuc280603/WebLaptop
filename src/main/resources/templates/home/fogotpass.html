@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"
+	th:replace="~{layout/index.html::areas(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<aside>
+		<div class="container-md">
+			<div class="main-form">
+				<h3 style="margin-left: 15%">Phục hồi mật khẩu</h3>
+				<form th:action="@{/api/send-email}" method="post" class="form-grop">
+					<div class="form-group">
+						<input type="text" placeholder="Username" name="username" th:value="${session.loggedInUser}" required>
+						<input type="text" placeholder="Email" name="email" required>
+						<div th:if="${message}" class="alert alert-success">
+							<span th:text="${message}" style="color: red;"></span>
+						</div>
+						<div class="button-group">
+							<button type="submit" style="margin-left: 40%;">Gửi</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</aside>
+</body>
+</html>

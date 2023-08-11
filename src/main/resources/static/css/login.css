@@ -1,0 +1,74 @@
+
+.main-form{
+    width: 400px;
+    margin-left: 35%;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    background-color: #fff;
+    margin-top: 60px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.main-form h3{
+    margin-left: 30%;
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-shadow:  0 0 5px rgb(148, 144, 144);
+}
+
+.form-grop input{
+    width: 350px;
+    margin-bottom: 20px;
+    border: 0.5px solid rgb(202, 197, 197);
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 18px;
+}
+
+.form-grop input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #e3001a9a;
+  }
+.form-grop button{
+    border: 0;
+    border-radius: 10px;
+    padding: 5px 20px;
+    background-color: #E30019;
+    color: #fff;
+    margin-left: 35%;
+}
+
+.suport{
+    display: flex;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+.suport a{
+    margin-right: 5px;
+    margin-left: 5px;
+    color: #5ec0f4;
+    text-decoration: none;
+}
+
+.suport a:hover{
+    color: #E30019;
+}
+#circle{
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: #ffd700; /* Màu vàng nhạt */
+  border-radius: 50%; /* Tạo hình tròn */
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+  margin-left: -10px;
+  border: 1px solid white; 
+}
+
+

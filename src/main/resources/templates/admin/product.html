@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Edit Product</title>
+
+	<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" href="/temp/plugins/fontawesome-free/css/all.min.css">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" href="/temp/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="/temp/dist/css/adminlte.min.css">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+	<div class="wrapper">
+
+
+		<!-- Navbar -->
+		<nav class="main-header navbar navbar-expand" style="background-color: rgb(190, 181, 181) !important;">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+							class="fas fa-bars" style="color: rgb(0, 0, 0) !important"></i></a></li>
+
+				<!-- Right navbar links -->
+				<ul class="navbar-nav ml-auto">
+					<!-- Navbar Search -->
+					<li class="nav-item"><a class="nav-link" data-widget="navbar-search" href="#" role="button"> <i
+								class="fas fa-search" style="color: rgb(0, 0, 0) !important"></i>
+						</a>
+						<div class="navbar-search-block">
+							<form class="form-inline">
+								<div class="input-group input-group-sm">
+									<input class="form-control form-control-navbar" type="search" placeholder="Search"
+										aria-label="Search">
+									<div class="input-group-append">
+										<button class="btn btn-navbar" type="submit">
+											<i class="fas fa-search"></i>
+										</button>
+										<button class="btn btn-navbar" type="button" data-widget="navbar-search">
+											<i class="fas fa-times"></i>
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</li>
+					<li class="nav-item"><a class="nav-link" data-widget="fullscreen" href="#" role="button"> <i
+								class="fas fa-expand-arrows-alt" style="color: rgb(0, 0, 0) !important"></i>
+						</a></li>
+				</ul>
+		</nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+		<aside class="main-sidebar sidebar-light-dark elevation-4"
+			style="background-color: rgb(190, 181, 181) !important;">
+			<!-- Brand Logo -->
+			<a href="/admin/home.html" class="brand-link"> <img src="/images/Core-Technology-3-p-2600.png" width="100px"
+					style="margin-left: 50px;">
+
+			</a>
+
+			<!-- Sidebar -->
+			<div class="sidebar">
+				<!-- Sidebar user panel (optional) -->
+				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+					<div class="image">
+						<img src="/temp/dist/img/heart.ico" class="img-circle elevation-2" alt="User Image">
+					</div>
+					<div class="info">
+						<a href="#" class="d-block">Chào Ngài ...</a>
+					</div>
+				</div>
+
+				<!-- SidebarSearch Form
+        <div class="form-inline">
+          <div class="input-group" data-widget="sidebar-search">
+            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+            <div class="input-group-append">
+              <button class="btn btn-sidebar">
+                <i class="fas fa-search fa-fw"></i>
+              </button>
+            </div>
+          </div>
+        </div> -->
+
+				<!-- Sidebar Menu -->
+				<nav class="mt-2">
+					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+						data-accordion="false">
+						<!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+						<li class="nav-item menu-open"><a th:href="@{|/home/admin/admin|}" class="nav-link"> <i
+									class="nav-icon fas fa-tachometer-alt"></i>
+								<p>Home</p>
+							</a></li>
+						<li class="nav-item menu-open"><a href="#" class="nav-link active"> <i
+									class="nav-icon fas fa-tachometer-alt"></i>
+								<p>
+									Product <i class="right fas fa-angle-left"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="/admin/product-view" class="nav-link"> <i
+											class="far fa-circle nav-icon"></i>
+										<p>Overview</p>
+									</a></li>
+								<li class="nav-item"><a href="/admin/product" class="nav-link active"> <i
+											class="far fa-circle nav-icon"></i>
+										<p>New / Edit</p>
+									</a></li>
+							</ul>
+						</li>
+						<li class="nav-item menu-open"><a href="/admin/doanhthu" class="nav-link"> <i
+									class="nav-icon fas fa-tachometer-alt"></i>
+								<p>Doanh thu</p>
+							</a></li>
+						<li class="nav-item menu-open"><a href="/admin/listuser" class="nav-link"> <i
+									class="nav-icon fas fa-tachometer-alt"></i>
+								<p>List User</p>
+							</a></li>
+						<li class="nav-item menu-open"><a href="#" class="nav-link active"> <i
+									class="nav-icon fas fa-tachometer-alt"></i>
+								<p>Quay về cửa hàng</p>
+							</a></li>
+					</ul>
+				</nav>
+				<!-- /.sidebar-menu -->
+			</div>
+			<!-- /.sidebar -->
+		</aside>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0">New Or Edit</h1>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card card-dark">
+								<div class="card-header">
+									<h3 class="card-title">New/Edit</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool" data-card-widget="collapse"
+											title="Collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+									</div>
+								</div>
+								<input type="hidden" th:value="${product.productid}">
+								<div class="card-body">
+									<form action="" method="post" th:object=${product} enctype="multipart/form-data">
+										<div class="form-group">
+											<input th:field="*{productname}" type="text" id="a" class="form-control"
+												placeholder="Name?">
+										</div>
+										<div class="form-group">
+											<input
+												th:value="${#numbers.formatDecimal(product.price/1000000, 0, 'COMMA', 3, 'POINT')} + '.000đ'"
+												type="text" id="a" class="form-control" placeholder="Price" />
+
+										</div>
+										<div class="form-group">
+											<input th:field="*{brand}" type="text" id="a" class="form-control"
+												placeholder="Brand?">
+										</div>
+										<div class="form-group">
+											<input th:field="*{promotion}" type="text" id="a" class="form-control"
+												placeholder="Promotion?">
+										</div>
+										<div class="form-group">
+											<input th:field="*{processor}" type="text" id="a" class="form-control"
+												placeholder="Processor?">
+										</div>
+										<div class="form-group">
+											<input th:field="*{RAM}" type="text" id="a" class="form-control"
+												placeholder="RAM?">
+										</div>
+										<div class="form-group">
+											<input th:field="*{VGA}" type="text" id="a" class="form-control"
+												placeholder="VGA?">
+										</div>
+										<div class="form-group">
+											<input th:field="*{mass}" type="text" id="a" class="form-control"
+												placeholder="Mass?">
+										</div>
+										<div class="form-group">
+											<input th:field="*{other}" type="text" id="a" class="form-control"
+												placeholder="Others?">
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-9">
+													<div class="row">
+														<div class="col-12 form-group">
+															<label for="description">Description</label>
+															<textarea th:field="*{descriptions}" id="description"
+																class="form-control" rows="4"></textarea>
+														</div>
+														<div class="col-12 form-group">
+															<label for="poster">Image</label> <input type="file"
+																th:value="${product.image1}" id="imagea"
+																class="form-control" name="imagea" />
+														</div>
+														<div class="col-12 form-group">
+															<label for="poster">Image</label> <input type="file"
+																id="imageb" class="form-control" name="imageb" />
+														</div>
+														<div class="col-12 form-group">
+															<label for="poster">Image</label> <input type="file"
+																id="imagec" class="form-control" name="imagec" />
+														</div>
+														<div class="col-12 form-group">
+															<label for="poster">Image</label> <input type="file"
+																id="imaged" class="form-control" name="imaged" />
+														</div>
+														<div class="col-12 form-group">
+															<label for="cate">Category</label> </br> <select name=""
+																id="" th:field="*{categoriesid}">
+																<option th:each="cate : ${listCategory}"
+																	th:value="${cate.Categoriesid}"
+																	th:text="${cate.Namecategories}"></option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-3">
+													<label for="inputProjectLeader">Preview 1</label>
+													<div style="width: 150px; height: 100px; border: 1px dotted gray">
+														<img th:src="@{'/laptop/' + *{image1}}" id="imgPreview" src="#"
+															height="100%" width="100%"></img>
+													</div>
+													<label for="inputProjectLeader">Preview 2</label>
+													<div style="width: 150px; height: 100px; border: 1px dotted gray">
+														<img th:src="@{'/laptop/' + *{image2}}" id="imgPreview" src="#"
+															height="100%" width="100%"></img>
+													</div>
+													<label for="inputProjectLeader">Preview 3</label>
+													<div style="width: 150px; height: 100px; border: 1px dotted gray">
+														<img th:src="@{'/laptop/' + *{image3}}" id="imgPreview" src="#"
+															height="100%" width="100%"></img>
+													</div>
+													<label for="inputProjectLeader">Preview 4</label>
+													<div style="width: 150px; height: 100px; border: 1px dotted gray">
+														<img th:src="@{'/laptop/' + *{image4}}" id="imgPreview" src="#"
+															height="100%" width="100%"></img>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="row" style="margin: auto auto;">
+											<a th:href="@{/admin/product}" type="button" id="resetBtn"
+												class="btn bg-gradient-info btn-md"
+												style="margin-right: 15px;">Reset</a>
+											<th:block th:if="${product.productid == 0}">
+
+												<button formaction="/admin/product/action/save" type="submit"
+													id="submitBtn" class="btn bg-gradient-success btn-md"
+													style="margin-right: 15px;">Submit</button>
+											</th:block>
+
+											<th:block th:unless="${product.productid == 0}">
+												<button
+													th:formaction="@{'/admin/product/action/update?id=' + ${product.productid}}"
+													type="submit" id="submitBtn" class="btn bg-gradient-success btn-md"
+													style="margin-right: 15px;">Update</button>
+
+												<a th:href="@{'/admin/product/action/delete?id=' + ${product.productid}}"
+													type="button" id="deleteBtn"
+													class="btn bg-gradient-danger btn-md">Delete</a>
+											</th:block>
+										</div>
+										<center>
+											<h5 id="message"></h5>
+										</center>
+									</form>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+					</div>
+				</div>
+			</section>
+			<br /> <br />
+
+		</div>
+		<!-- /.content-wrapper -->
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+
+		<!-- Main Footer -->
+		<!-- <footer class="main-footer">
+  <center><strong>Nguyễn Hoài Nam.</strong></center>
+  </footer> -->
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- REQUIRED SCRIPTS -->
+	<!-- jQuery -->
+	<script src="/temp/plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="/temp/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- overlayScrollbars -->
+	<script src="/temp/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="/temp/dist/js/adminlte.js"></script>
+
+	<!-- PAGE PLUGINS -->
+	<!-- jQuery Mapael -->
+	<script src="/temp/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+	<script src="/temp/plugins/raphael/raphael.min.js"></script>
+	<script src="/temp/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+	<script src="/temp/plugins/jquery-mapael/maps/usa_states.min.js"></script>
+	<!-- ChartJS -->
+	<script src="/temp/plugins/chart.js/Chart.min.js"></script>
+
+	<!-- AdminLTE for demo purposes -->
+	<!--<script src="./temp/dist/js/demo.js"></script> -->
+	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+	<script src="/temp/dist/js/pages/dashboard2.js"></script>
+	<!-- DataTables  & Plugins -->
+	<script src="/temp/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="/temp/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+	<script src="/temp/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+	<script src="/temp/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+	<script src="/temp/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+	<script src="/temp/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+	<script src="/temp/plugins/jszip/jszip.min.js"></script>
+	<script src="/temp/plugins/pdfmake/pdfmake.min.js"></script>
+	<script src="/temp/plugins/pdfmake/vfs_fonts.js"></script>
+	<script src="/temp/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+	<script src="/temp/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+	<script src="/temp/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+	<!-- <script>
+
+	var titleOrigin, hrefOrigin, descriptionOrigin, posterOrigin;
+	$(document).ready(function(){
+		titleOrigin = $('#title').val();
+		hrefOrigin = $('#href').val();
+		descriptionOrigin = $('#description').val();
+		posterOrigin = $('#poster').val();
+	});
+	
+	$('#resetBtn').click(function(){
+		 $('#title').val(titleOrigin);
+		 $('#href').val(hrefOrigin);
+		 $('#description').val(descriptionOrigin);
+		 $('#poster').val(posterOrigin);
+		 
+		 if(posterOrigin.length > 0){
+				$('#imgPreview').attr('src',posterOrigin);
+		 }
+	});
+	
+	$('#submitBtn').click(function(){
+		$('#message').text('');
+		var url;
+		var isEdit = $('#isEdit').val();
+		if(isEdit == 'true'){
+			url = '/JAVA4ASMFINAL/admin/video?action=edit&href=' + hrefOrigin;
+		}else{
+			url = '/JAVA4ASMFINAL/admin/video?action=add';
+		}
+		
+		var formData = {
+			'hrefOrigin': hrefOrigin,
+			'title' : $('#title').val(),
+			'newHref' : $('#href').val(),
+			'description' : $('#description').val(),
+			'poster' : $('#poster').val()
+			
+		};
+		
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: formData
+		}).then(function(data){
+			  window.location.href = "http://localhost:8080/JAVA4ASMFINAL/admin/video?action=view";
+		}).fail(function(error){
+			$('#message').text('Toang');
+		});
+	});
+
+	$('#poster').change(function(){
+		var newSrc = $('#poster').val();
+		$('#imgPreview').attr('src',newSrc);
+	});
+	
+	
+	
+</script> -->
+
+
+
+
+
+
+</body>
+
+</html>

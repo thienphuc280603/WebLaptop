@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/index.html::areas(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/details.css}">
+<style type="text/css">
+.product-hot {
+	border: 2px dashed red;
+	padding: 20px;
+	border-radius: 10px;
+	background: #FFF;
+}
+</style>
+</head>
+<body>
+	<aside>
+		<div class="container-md">
+			<div class="main-details" th:object="${ctsp}">
+				<div class="title">
+					<p th:text="${ctsp.productname}"
+						style="font-weight: 700; font-size: 18px; margin-top: 10px;"></p>
+				</div>
+
+				<div class="row">
+					<div class="col-md-5">
+						<div class="img-product">
+							<div id="carouselExampleControls" class="carousel slide"
+								data-ride="carousel">
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<img th:src="@{'/laptop/' + ${ctsp.Image1}}"
+											class="d-block w-100" alt="...">
+									</div>
+									<div class="carousel-item">
+										<img th:src="@{'/laptop/' + ${ctsp.Image2}}"
+											class="d-block w-100" alt="...">
+									</div>
+									<div class="carousel-item">
+										<img th:src="@{'/laptop/' + ${ctsp.Image3}}"
+											class="d-block w-100" alt="...">
+									</div>
+									<div class="carousel-item">
+										<img th:src="@{'/laptop/' + ${ctsp.Image4}}"
+											class="d-block w-100" alt="...">
+									</div>
+								</div>
+								<button class="carousel-control-prev" type="button"
+									data-target="#carouselExampleControls" data-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="sr-only">Previous</span>
+								</button>
+								<button class="carousel-control-next" type="button"
+									data-target="#carouselExampleControls" data-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="sr-only">Next</span>
+								</button>
+							</div>
+							<div class="img-list">
+								<img th:src="@{'/laptop/' + ${ctsp.Image2}}" alt=""
+									width="130px"> <img
+									th:src="@{'/laptop/' + ${ctsp.Image3}}" alt="" width="130px">
+								<img th:src="@{'/laptop/' + ${ctsp.Image4}}" alt=""
+									width="130px">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-7">
+						<div class="center-product">
+
+							<div class="price">
+								<p
+									th:text="${#numbers.formatDecimal(ctsp.price/1000000, 0, 'COMMA', 3, 'POINT')} + '.000đ'"></p>
+							</div>
+							<div class="product-info">
+								<div class="info">
+									<label for="">CPU: </label>
+									<p
+										style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"
+										th:text="${ctsp.processor}"></p>
+								</div>
+
+								<div class="info">
+									<label for="">RAM: </label>
+									<p th:text="${ctsp.RAM}"></p>
+								</div>
+
+								<div class="info">
+									<label for="">CARD: </label>
+									<p th:text="${ctsp.VGA}"></p>
+								</div>
+
+								<div class="info">
+									<label for="">Khác: </label>
+									<p
+										style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"
+										th:text="${ctsp.other}"></p>
+								</div>
+							</div>
+
+							<div class="overlay"
+								style="position: fixed; top: 40%; left: 40%; width: 400px; height: 200px;; background-color: rgba(0, 0, 0, 0.7); display: none; justify-content: center; align-items: center; 
+								border-radius: 15px; z-index: 999;">
+
+								<p class="added-message"
+									style="color: #42ff72; font-size: 20px; padding: 10px 20px; border-radius: 5px; display: none; margin-top: 75px; margin-left: 15px; font-size: 30px;">
+									<i class="fa fa-check" aria-hidden="true"
+										style="display: inline-block; width: 30px; height: 30px; border-radius: 50%; background-color: #42ff72; text-align: center; line-height: 30px; color: #fff;"></i>
+									Đã thêm vào giỏ hàng
+								</p>
+							</div>
+
+							<div class="addtocart">
+								<!-- Kiểm tra xem có thông tin người dùng đăng nhập hay không -->
+								<th:block th:if="${session.loggedInUser == null}">
+									<a th:href="@{/user/login}" class="btn-success"
+									style="margin-left: 250px; text-decoration: none;
+									padding: 10px 20px; border-radius: 10px;">Đăng nhập</a>
+								</th:block>
+								<!-- Nếu đã đăng nhập, cho phép thêm vào giỏ hàng -->
+								<th:block th:if="${session.loggedInUser != null}">
+									<button th:attr="ng-click=@{|cart.add(${ctsp.productid})|}">Thêm
+										vào giỏ hàng</button>
+								</th:block>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="row" style="margin-top: 30px;">
+					<div class="col-md-7">
+						<div class="description-1">
+							<h3>Đặc điểm nổi bật</h3>
+							<p th:text="${ctsp.descriptions}"></p>
+						</div>
+					</div>
+
+					<div class="col-md-5">
+						<div class="info-product">
+							<div class="description-2">
+								<div class="item-left">
+
+									<label for="">CPU: </label> <label for="">Card: </label> <label
+										for="">Memory: </label> <label for="">Kích thước: </label> <label
+										for="">Màn hình: </label>
+
+
+								</div>
+
+								<div class="item-right">
+
+									<p th:text="${ctsp.processor}"></p>
+									<p th:text="${ctsp.VGA}"></p>
+									<p th:text="${ctsp.RAM}"></p>
+									<p th:text="${ctsp.mass}"></p>
+									<p th:text="${ctsp.other}"></p>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="container">
+					<div class="product">
+						<div class="title-hot">
+							<h1 style="font-size: 20px; padding: 0;">CÁC SẢN PHẨM CÙNG
+								LOẠI</h1>
+						</div>
+						<div class="row product-hot"
+							style="border: 2px dashed red; padding: 20px; border-radius: 10px; background: #FFF;">
+							<div class="col-md-3" th:each="brand : ${brand}">
+								<a th:href="@{'/home/chitietsp?id=' + ${brand.productid}}">
+									<div class="product-item">
+										<img class="prodcut-img1"
+											th:src="@{'/laptop/' + ${brand.Image1}}" alt width="100%">
+										<p class="prodcut-title" th:text="${brand.productname}"></p>
+										<img class="prodcut-img2"
+											src="https://laptop88.vn/template/giaodien_2022/images/sticker-4.png"
+											alt width="80%">
+										<div class="product-configuration">
+											<p>
+												CPU: <i th:text="${brand.processor}"></i>
+											</p>
+											<p>
+												RAM: <i th:text="${brand.RAM}"></i>
+											</p>
+											<p>
+												Card: <i th:text="${brand.VGA}"></i>
+											</p>
+											<p>
+												M.Hinh: <i th:text="${brand.other}"></i>
+											</p>
+										</div>
+										<p class="product-price"
+											th:text="${#numbers.formatDecimal(brand.price/1000000, 0, 'COMMA', 3, 'POINT')} + '.000đ'"></p>
+									</div>
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aside>
+</body>
+</html>

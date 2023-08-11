@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="menu">
+		<div class="top" style="background-color: #C0EEC3;">
+			<img
+				th:src="@{/images/banner_top_web_-_c0eec3-_1280x50_1cd8a40770b342fa8b1b98fb00196547.webp}"
+				alt style="margin-left: 145px;">
+		</div>
+
+		<div class="baner-too">
+			<div class="img_left">
+				<img
+					src="/images/laptop-sinh-vien-24t7-side-right_6e20ab6562b64f239c84261479f36584.webp"
+					alt="" width="120px;">
+			</div>
+			<div class="img_right">
+				<img
+					src="/images/pc-gaming-24t7-230x697_266a4a0d54984d0cae85bbed19845cc3.webp"
+					alt="" width="120px;">
+			</div>
+		</div>
+
+		<div class="header-top"
+			style="position: sticky; top: 0; z-index: 999;">
+			<div class="container-md">
+				<div class="row">
+					<div class="col-md-2 header-top__image">
+						<a th:href="@{/home/index}"><img
+							th:src="@{/images/Core-Technology-3-p-2600.png}" alt width="70%"
+							style="color: white; margin-top: 5px;"></a>
+					</div>
+					<div class="col-md-5 header-top__search">
+						<form action="/home/search" method="get">
+							<div class="search">
+								<input type="text" name="keyword"
+									placeholder="Bạn muốn tìm gì...">
+								<button>
+									<i class="fa fa-search" aria-hidden="true"></i>
+								</button>
+							</div>
+						</form>
+					</div>
+					<div class="col-md-5 header-top__rightitems">
+						<div class="right-item">
+							<a th:href="@{/admin/admin}">
+								<p style="margin-top: 10px;">Admin</p>
+							</a>
+						</div>
+						<div class="right-item">
+							<a href=""><i class="fa fa-headphones" aria-hidden="true"></i>
+								<p style="margin-top: 10px;">HotLine</p> </a>
+						</div>
+
+						<div class="right-item">
+							<a href=""><i class="fa fa-map-marker" aria-hidden="true"></i>
+								<p style="margin-top: 10px;">Showrom</p> </a>
+						</div>
+
+
+						<div class="right-item">
+							<a th:href="@{/user/cart}"> <i class="fa fa-shopping-cart"
+								aria-hidden="true"></i>
+								<p style="margin-top: 10px;">Giỏ hàng</p>
+							</a>
+						</div>
+
+						<div class="right-item">
+							<a th:href="@{/user/login}"> <i class="fa fa-user"
+								aria-hidden="true"></i>
+
+								<div th:if="${session.loggedInUser}">
+									<p style="margin-top: 10px;" th:text="${session.loggedInUser}"></p>
+
+								</div>
+								<div th:unless="${session.loggedInUser}">
+									<p style="margin-top: 10px;">Đăng nhập</p>
+								</div>
+
+							</a>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="header-bottom">
+			<div class="container-md">
+				<div class="row">
+					<div class="col-md-3" style="padding-left: 0;">
+						<div class="categoryname">
+							<i class="fa fa-list-ul" aria-hidden="true"></i>
+							<p>DANH MỤC SẢN PHẨM</p>
+						</div>
+					</div>
+					<div class="col-md-9">
+						<marquee behavior="" direction="">
+							<div class="namecreater">
+								<p>PS24434 - Nguyễn Thiên Phúc</p>
+								<p>PS24429 - Đoàn Minh Tuấn</p>
+								<p>PS24469 - Nguyễn Hoài Nam</p>
+							</div>
+						</marquee>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

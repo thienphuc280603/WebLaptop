@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"
+	th:replace="~{layout/index.html::areas(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<aside>
+		<div class="container-md">
+			<div class="main-form">
+				<h3>Đăng nhập</h3>
+				<form action="" class="form-grop" th:action="@{/api/login}"
+					method="post">
+					<!-- <div class="form-group"> -->
+					<input type="text" placeholder="Username" id="username"
+						name="username" required>
+						<input type="password"
+						placeholder="Password" id="password" name="password" required>
+						<p th:text="${message}"><p>
+					<button type="submit" >Đăng nhập</button>
+					<div class="suport">
+						<a th:href="@{/user/forgotpass}">Quên mật khẩu?</a> <a
+							th:href="@{/user/changepass}">Đổi mật khẩu?</a> <a
+							th:href="@{/user/register}">Đăng kí</a>
+					</div>
+					<!-- </div> -->
+				</form>
+			</div>
+		</div>
+	</aside>
+</body>
+</html>

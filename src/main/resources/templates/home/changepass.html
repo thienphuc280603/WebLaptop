@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" th:replace="~{layout/index.html::areas(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<aside>
+			<div class="container-md">
+				<div class="main-form">
+					<h3 style="margin-left: 55px;">Cập nhật tài khoản</h3>
+					<form th:action="@{/api/change-password}" method="post" class="form-grop">
+						<div class="form-group">
+							<input type="text" name="username" placeholder="Username"
+								required> <input type="password" name="password"
+								placeholder="Password" required> <input type="password"
+								name="newPassword" placeholder="New Password" required>
+							<div th:if="${message}" class="success-message">
+								<p th:text="${message}"></p>
+							</div>
+							<div th:if="${errorMessage}" class="error-message">
+								<p th:text="${errorMessage}" style="color: red;"></p>
+							</div>
+							<div class="button-group">
+								<button type="submit" style="margin-left: 140px;">Cập nhật</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</aside>
+</body>
+</html>

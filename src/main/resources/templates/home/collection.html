@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/index.html::areas(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<aside>
+		<div class="container-md">
+			<div class="product">
+				<div class="collection">
+					<label for="">Sắp xếp theo: </label>
+					<ul>
+						<li><a th:href="@{/home/giatangdan}">Giá tăng dần</a></li>
+						<li><a th:href="@{/home/giagiamdan}">Giá giảm dần</a></li>
+						<li><a th:href="@{/home/namea_z}">Tên A -> Z</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="product">
+				<div class="row product-hot">
+					<div class="col-md-3" th:each="pros : ${pros.content}">
+						<a th:href="@{'/home/chitietsp?id=' + ${pros.productid}}">
+							<div class="product-item">
+								<img class="prodcut-img1"
+									th:src="@{'/laptop/' + ${pros.image1}}" alt width="100%">
+								<p class="prodcut-title" th:text="${pros.productname}"></p>
+								<img class="prodcut-img2"
+									src="https://laptop88.vn/template/giaodien_2022/images/sticker-4.png"
+									alt width="80%">
+								<div class="product-configuration">
+									<p>
+										CPU: <i th:text="${pros.processor}"></i>
+									</p>
+									<p>
+										RAM: <i th:text="${pros.RAM}"></i>
+									</p>
+									<p>
+										Card: <i th:text="${pros.VGA}"></i>
+									</p>
+									<p>
+										M.Hinh: <i th:text="${pros.other}"></i>
+									</p>
+								</div>
+								<p class="product-price"
+									th:text="${#numbers.formatDecimal(pros.price/1000000, 0, 'COMMA', 3, 'POINT')} + '.000đ'"></p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aside>
+
+	<div class="pagination">
+		<div
+			th:if="${#strings.isEmpty(param.category) && #strings.isEmpty(param.keyword) && currentPath !='/home/giatangdan' && currentPath1 != '/home/giagiamdan' && currentPath2 != '/home/namea_z'}">
+			<a th:if="${pros.hasPrevious()}"
+				th:href="@{/home/allsanpham(page=0)}">First</a> <a
+				th:if="${pros.hasPrevious()}"
+				th:href="@{/home/allsanpham(page=${pros.number - 1})}">Previous</a>
+			<span th:each="i : ${#numbers.sequence(0, pros.totalPages - 1)}">
+				<a th:href="@{/home/allsanpham(page=${i})}" th:text="${i} + 1"></a>
+			</span> <a th:if="${pros.hasNext()}"
+				th:href="@{/home/allsanpham(page=${pros.number + 1})}">Next</a> <a
+				th:if="${pros.hasNext()}"
+				th:href="@{/home/allsanpham(page=${pros.totalPages - 1})}">Last</a>
+		</div>
+		<div th:if="${not #strings.isEmpty(param.keyword)}">
+			<a th:if="${pros.hasPrevious()}"
+				th:href="@{/home/search(page=0, keyword=${param.keyword})}">First</a>
+			<a th:if="${pros.hasPrevious()}"
+				th:href="@{/home/search(page=${pros.number - 1}, keyword=${param.keyword})}">Previous</a>
+			<span th:each="i : ${#numbers.sequence(0, pros.totalPages - 1)}">
+				<a th:href="@{/home/search(page=${i}, keyword=${param.keyword})}"
+				th:text="${i + 1}"></a>
+			</span> <a th:if="${pros.hasNext()}"
+				th:href="@{/home/search(page=${pros.number + 1}, keyword=${param.keyword})}">Next</a>
+			<a th:if="${pros.hasNext()}"
+				th:href="@{/home/search(page=${pros.totalPages - 1}, keyword=${param.keyword})}">Last</a>
+		</div>
+		<div th:if="${not #strings.isEmpty(param.category)}">
+			<a th:if="${pros.hasPrevious()}"
+				th:href="@{/home/procate(page=0, category=${param.category})}">First</a>
+			<a th:if="${pros.hasPrevious()}"
+				th:href="@{/home/procate(page=${pros.number - 1}, category=${param.category})}">Previous</a>
+			<span th:each="i : ${#numbers.sequence(0, pros.totalPages - 1)}">
+				<a th:href="@{/home/procate(page=${i}, category=${param.category})}"
+				th:text="${i + 1}"></a>
+			</span> <a th:if="${pros.hasNext()}"
+				th:href="@{/home/procate(page=${pros.number + 1}, category=${param.category})}">Next</a>
+			<a th:if="${pros.hasNext()}"
+				th:href="@{/home/procate(page=${pros.totalPages - 1}, category=${param.category})}">Last</a>
+		</div>
+		<div th:if="${currentPath == '/home/giatangdan'}">
+			<a th:if="${pros.hasPrevious()}"
+				th:href="@{/home/giatangdan(page=0)}">First</a> <a
+				th:if="${pros.hasPrevious()}"
+				th:href="@{/home/giatangdan(page=${pros.number - 1})}">Previous</a>
+			<span th:each="i : ${#numbers.sequence(0, pros.totalPages - 1)}">
+				<a th:href="@{/home/giatangdan(page=${i})}" th:text="${i + 1}"></a>
+			</span> <a th:if="${pros.hasNext()}"
+				th:href="@{/home/giatangdan(page=${pros.number + 1})}">Next</a> <a
+				th:if="${pros.hasNext()}"
+				th:href="@{/home/giatangdan(page=${pros.totalPages - 1})}">Last</a>
+		</div>
+		<div th:if="${currentPath1 == '/home/giagiamdan'}">
+			<a th:if="${pros.hasPrevious()}"
+				th:href="@{/home/giagiamdan(page=0)}">First</a> <a
+				th:if="${pros.hasPrevious()}"
+				th:href="@{/home/giagiamdan(page=${pros.number - 1})}">Previous</a>
+			<span th:each="i : ${#numbers.sequence(0, pros.totalPages - 1)}">
+				<a th:href="@{/home/giagiamdan(page=${i})}" th:text="${i + 1}"></a>
+			</span> <a th:if="${pros.hasNext()}"
+				th:href="@{/home/giagiamdan(page=${pros.number + 1})}">Next</a> <a
+				th:if="${pros.hasNext()}"
+				th:href="@{/home/giagiamdan(page=${pros.totalPages - 1})}">Last</a>
+		</div>
+		<div th:if="${currentPath2 == '/home/namea_z'}">
+			<a th:if="${pros.hasPrevious()}" th:href="@{/home/namea_z(page=0)}">First</a>
+			<a th:if="${pros.hasPrevious()}"
+				th:href="@{/home/namea_z(page=${pros.number - 1})}">Previous</a> <span
+				th:each="i : ${#numbers.sequence(0, pros.totalPages - 1)}"> <a
+				th:href="@{/home/namea_z(page=${i})}" th:text="${i + 1}"></a>
+			</span> <a th:if="${pros.hasNext()}"
+				th:href="@{/home/namea_z(page=${pros.number + 1})}">Next</a> <a
+				th:if="${pros.hasNext()}"
+				th:href="@{/home/namea_z(page=${pros.totalPages - 1})}">Last</a>
+		</div>
+	</div>
+</body>
+</html>

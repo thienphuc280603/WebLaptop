@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/index.html::areas(~{::body})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<aside>
+		<div class="container-md">
+			<div class="cart-main">
+				<div class="cart-title">
+					<a th:href="@{/home/index}">Trở về</a>
+					<a th:href="@{/order/list}">Xem lịch sử hóa đơn</a>
+				</div>
+
+				<div class="mycart">
+					<div class="cart" ng-repeat="item in cart.items">
+						<a href="">
+							<div class="myproduct">
+								<img src="/laptop/{{item.image1}}" alt="" width="200px">
+								<div class="productinfo">
+									<p class="product_title">{{item.productname}}</p>
+									 <p class="product_price" style="margin: 10px 0px;">{{(item.price/1000000).toFixed(3).replace(".", ".")}}.000đ</p>
+									<div class="numberCollect">
+										<input ng-model="item.qty" type="number" min="1"
+											ng-change="cart.saveToLocalStorage()">
+										<button ng-click="cart.remove(item.productid)">Xóa</button>
+									</div>
+
+								</div>
+							</div>
+
+						</a>
+
+					</div>
+					<button ng-click="cart.clear()" id="clear">Clear</button>
+				</div>
+				<div class="cart-footer">
+					<p style="font-size: 17px;">Tổng tiền sản phẩm: {{(cart.amount/1000000).toFixed(3).replace(".", ".")}}.000đ</p>
+
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<div>Purchaser:</div>
+							<div hidden id="username">[[${session.UserID}]]</div>
+							<div class="form-control">[[${session.loggedInUser}]]</div>
+						</div>
+						<div class="form-group col-sm-6">
+							<div>Order Date:</div>
+							<div class="form-control">{{order.createDate | date :
+								'dd-MM-yyyy'}}</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-12">
+							<div>Shipping Address:</div>
+							<textarea ng-model="order.address" class="form-control"></textarea>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="ok">
+					<div class="panel-footer text-right">
+						<button ng-click="order.purchase()" id="checkoutbtn">Đặt hàng</button>
+					</div>
+					<a th:href="@{/home/allsanpham}">Chọn sản phẩm khác</a>
+				</div>
+
+			</div>
+		</div>
+	</aside>
+</body>
+
+</html>

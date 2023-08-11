@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/index.html::areas(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container-md">
+	
+	
+	
+	<main style="margin-top: 50px; margin-bottom: 50px; background: #fff;
+		padding: 20px; border-radius: 10px;">
+        <div class="panel panel-primary">
+            <div class="panel-heading">YOUR ORDERS PURCHASED</div>
+            <table class="table">
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>Order No.</th>
+						<th>Order Date</th>
+						<th>Shipping Address</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="order, state: ${orderitem}">
+						<td>[[${state.index}]]</td>
+						<td>[[${order.id}]]</td>
+						<td>[[${order.createDate}]]</td>
+						<td>[[${order.address}]]</td>
+						<td>
+							<a th:href="@{|/order/detail${order.id}|}" class="btn btn-default"
+							style="padding: 5px 10px; background-color: red; color: #fff;">
+								<b class="glyphicon glyphicon-search">xem</b>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+          </div>
+    </main>
+	</div>
+</body>
+</html>
